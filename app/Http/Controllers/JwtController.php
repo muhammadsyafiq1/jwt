@@ -56,6 +56,19 @@ class JwtController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
+    public function cekLogin()
+    {
+        $user = Auth::guard('api')->user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthenticated'], 401);
+        }
+
+        return response()->json([
+            'user' => $user,
+        ]);
+    }
+
     public function test()
     {
         return 'ok';

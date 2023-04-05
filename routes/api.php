@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [JwtController::class, 'login']);
 Route::post('/register', [JwtController::class, 'register']);
+Route::get('/cek-login', [JwtController::class, 'cekLogin']);
 
 Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('/test', [JwtController::class, 'test']);
