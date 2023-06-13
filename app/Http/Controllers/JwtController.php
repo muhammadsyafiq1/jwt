@@ -22,8 +22,8 @@ class JwtController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'Could not create token'], 500);
         }
-
-        return response()->json(compact('token'));
+        $tokenVariable = $token;
+        return response()->json(compact('tokenVariable'));
     }
 
     public function register(Request $request)
